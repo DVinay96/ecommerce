@@ -18,10 +18,9 @@ const getProduct = async (request, response) => {
 }
 
 const createProduct = async (request, response) => {
-    const { productID, productName, productType, productPrice, productSize } = request.body;
+    const { productName, productType, productPrice, productSize } = request.body;
     try {
         await Product.create({
-            productID,
             productName,
             productType,
             productPrice,
@@ -40,9 +39,9 @@ const createProduct = async (request, response) => {
 
 // quiero que lo busque y actualice por ID, puedo usar findbyIDandUpdate()??
 const updateProduct = async (request, response) => {
-    const { productID, productName, productType, productPrice, productSize } = request.body;
+    const { productName, productType, productPrice, productSize } = request.body;
     try {
-        const product = await User.findOneAndUpdate({ productID }, { productName, productType, productPrice, productSize }, { new: true })
+        const product = await User.findOneAndUpdate({ _id }, { productName, productType, productPrice, productSize }, { new: true })
         if (user === null) {
             return response.json({
                 message: error.message,
@@ -60,9 +59,9 @@ const updateProduct = async (request, response) => {
 }
 
 const deleteProduct = async (request, response) => {
-    const { productID } = request.body;
+    const { _id } = request.body;
     try {
-        const product = await User.findOneAndDelete({ productID })
+        const product = await User.findOneAndDelete({ _id })
         if (product === null) {
             return response.json({
                 message: error.message,

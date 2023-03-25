@@ -9,3 +9,5 @@ router.post('/', createUser)
 router.put('/', updateUser)
 
 router.delete('/', deleteUser)
+
+module.exports = router
