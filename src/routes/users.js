@@ -1,10 +1,14 @@
 const { Router } = require('express')
 const router = Router()
-const { getUser, createUser, updateUser, deleteUser } = require('../controllers/users')
+const { getUser, createUser, updateUser, deleteUser, login } = require('../controllers/users')
+const auth = require('../middlewares/auth')
+
 
 router.get('/', getUser)
 
-router.post('/', createUser)
+router.post('/', auth, createUser)
+
+router.post('/login', auth, login)
 
 router.put('/', updateUser)
 

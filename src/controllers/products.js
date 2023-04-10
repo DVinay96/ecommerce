@@ -1,7 +1,3 @@
-const { request, response } = require('express'); //?????????? preguntar
-
-const express = require('express');
-const { findByIdAndUpdate } = require('../models/users'); // no se esta llamando, lo dejo ahi?
 const Product = require('../models/products')
 
 
@@ -37,7 +33,6 @@ const createProduct = async (request, response) => {
 }
 
 
-// quiero que lo busque y actualice por ID, puedo usar findbyIDandUpdate()??
 const updateProduct = async (request, response) => {
     const { productName, productType, productPrice, productSize } = request.body;
     try {
@@ -79,4 +74,4 @@ const deleteProduct = async (request, response) => {
 
 }
 
-module.exports = { deleteProduct, createProduct, updateProduct, deleteProduct }
+module.exports = { getProduct, deleteProduct, createProduct, updateProduct }
